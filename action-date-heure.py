@@ -3,9 +3,7 @@ from datetime import datetime
 from datetime import date
 from pytz import timezone
 
-MQTT_IP_ADDR = "192.168.1.107"
-MQTT_PORT = 1883
-MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
+MQTT_ADDR = "localhost:1883"
 
 
 def verbalise_hour(i):
