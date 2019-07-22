@@ -64,4 +64,5 @@ def intent_received(hermes, intent_message):
 
 with Hermes(MQTT_ADDR) as h:
 	print("test")
+	hermes.publish_end_session(intent_message.session_id, "this is a simple test")
 	h.subscribe_intents(intent_received).start()
