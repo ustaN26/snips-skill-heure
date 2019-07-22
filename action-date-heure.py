@@ -51,7 +51,7 @@ def intent_received(hermes, intent_message):
 
 		hermes.publish_end_session(intent_message.session_id, sentence)
 	elif intent_message.intent.intent_name == 'ustaN:date':
-		MonthList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
+		MonthList = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre']
 		DayList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
 		dayNumber = date.today().day
 		weekday = DayList[date.today().weekday()-1]
