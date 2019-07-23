@@ -5,7 +5,6 @@ from pytz import timezone
 
 MQTT_ADDR = "localhost:1883"
 
-
 def verbalise_hour(i):
 	if i == 0:
 		return "minuit"
@@ -34,17 +33,13 @@ def verbalise_minute(i):
 	else:
 		return "{0}".format(str(i))
 
-
 def intent_received(hermes, intent_message):
+	print(intent_message)
 	if intent_message.intent.intent_name == 'ustaN:heure':
 		sentence = 'Il est '
-		print(intent_message.intent_name)
-
 		now = datetime.now(timezone('Europe/Paris'))
-
 		sentence += verbalise_hour(now.hour) + " " + verbalise_minute(now.minute)
 		print(sentence)
-
 		hermes.publish_end_session(intent_message.session_id, sentence)
 	elif intent_message.intent.intent_name == 'ustaN:date':
 		MonthList = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre']
@@ -56,10 +51,7 @@ def intent_received(hermes, intent_message):
 		hermes.publish_end_session(intent_message.session_id, sentence)
 	else :
 		hermes.publish_end_session(intent_message.session_id, "erreur!")
-
-
 with Hermes(MQTT_ADDR) as h:
 	print("start")
-	print(intent_received.intent_name)
 	h.subscribe_intents(h, intent_received) \
 .start()
