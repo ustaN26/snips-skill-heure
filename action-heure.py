@@ -38,10 +38,7 @@ def verbalise_minute(i):
 
 
 def intent_received(hermes, intent_message):
-
-	print()
 	print(intent_message.intent.intent_name)
-	print ()
 
 	if intent_message.intent.intent_name == 'ustaN:askTime':
 
