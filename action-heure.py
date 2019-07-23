@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 from hermes_python.hermes import Hermes
 from datetime import datetime
 from pytz import timezone
