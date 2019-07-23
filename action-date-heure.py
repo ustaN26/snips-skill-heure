@@ -36,10 +36,6 @@ def verbalise_minute(i):
 
 
 def intent_received(hermes, intent_message):
-
-	print()
-	print(intent_message.intent.intent_name)
-	print ()
 	if intent_message.intent.intent_name == 'ustaN:heure':
 		sentence = 'Il est '
 		print(intent_message.intent.intent_name)
@@ -63,6 +59,7 @@ def intent_received(hermes, intent_message):
 
 
 with Hermes(MQTT_ADDR) as h:
-	print("test")
-	#hermes.publish_end_session(intent_message.session_id, "this is a simple test")
-	h.subscribe_intents(intent_received)
+	print("start")
+	print(intent_received.intent.intent_name)
+	h.subscribe_intents(h, intent_received) \
+.start()
