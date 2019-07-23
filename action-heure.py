@@ -50,16 +50,7 @@ def intent_received(hermes, intent_message):
 		sentence += verbalise_hour(now.hour) + " " + verbalise_minute(now.minute)
 		print(sentence)
 
-		# hermes.publish_continue_session(intent_message.session_id, sentence, ["Joseph:greetings"])
 		hermes.publish_end_session(intent_message.session_id, sentence)
-	elif intent_message.intent.intent_name == 'ustaN:date'
-		MonthList = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre']
-		DayList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
-		dayNumber = date.today().day
-		weekday = DayList[date.today().weekday()-1]
-		sentence = "On est le " + weekday + " " + str(dayNumber) + " "+ MonthList[date.today().month-1]
-		print(sentence)
-		hermes.publish_end_session(intentMessage.session_id, sentence)
 
 with Hermes(MQTT_ADDR) as h:
 	h.subscribe_intents(intent_received).start()
